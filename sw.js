@@ -1,6 +1,6 @@
 // মাকতাবায়ে জহির — অফলাইনে চালানোর জন্য সার্ভিস ওয়ার্কার
 // অ্যাপের ফাইল আপডেট করলে নিচের সংস্করণ নম্বর বাড়িয়ে দিন (v1 → v2)
-const CACHE = 'maktabaye-zahir-v1';
+const CACHE = 'maktabaye-zahir-v4';
 const SHELL = ['./', 'index.html', 'manifest.json', 'favicon.ico',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/emblem.png', 'icons/apple-touch-icon.png'];
 
