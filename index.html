@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>মাকতাবায়ে জহির | বই বিক্রয়</title>
+<meta name="description" content="মাকতাবায়ে জহির — বই বিক্রয়, স্টক ও হিসাব ব্যবস্থাপনা অ্যাপ">
+<meta name="theme-color" content="#d9f1e8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="মাকতাবায়ে জহির">
+<meta property="og:title" content="মাকতাবায়ে জহির">
+<meta property="og:description" content="বই বিক্রয়, স্টক ও হিসাব ব্যবস্থাপনা">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+:root{--p:#22a58a;--p2:#5cc9ad;--pd:#0e7560;--sky:#dff1ff;--lav:#ece6ff;--peach:#ffeede;--rose:#ffe6ee;--mint:#e2f7ef;--sun:#fff3cf;--ink:#2a3f4a;--muted:#7a8f99;--line:#e6eef2;--green:#22a58a;--green2:#5cc9ad;--shadow:0 10px 30px rgba(110,140,170,.14)}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Hind Siliguri',system-ui,sans-serif;color:var(--ink);background:radial-gradient(900px 500px at 0% 0%,#dcf6ec 0,transparent 60%),radial-gradient(800px 500px at 100% 8%,#e8e1ff 0,transparent 60%),radial-gradient(900px 600px at 50% 100%,#ffeedd 0,transparent 60%),#f7fbfa;background-attachment:fixed;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer;border:0;transition:.18s}
+/* Top bar */
+.topbar{background:linear-gradient(120deg,#cdf2e5,#d9ecff 55%,#e7defe);color:var(--ink);padding:18px 22px;box-shadow:0 8px 24px rgba(120,150,190,.18);border-bottom:1px solid #ffffffb0}
+.top-inner{max-width:1250px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:48px;height:48px;border-radius:16px;background:#fff;display:grid;place-items:center;font-size:25px;box-shadow:0 6px 16px rgba(34,165,138,.2)}
+.brand h1{margin:0;font-size:22px;font-weight:700;color:#0e5f4f}.brand small{color:#4f7a7c;font-size:13px}
+.top-actions{display:flex;gap:8px}
+.top-actions button{padding:9px 14px;border-radius:12px;color:var(--pd);background:#ffffffd0;border:1px solid #fff;font-weight:600;box-shadow:0 3px 10px rgba(100,140,170,.12)}
+.top-actions button:hover{background:#fff;transform:translateY(-1px)}
+/* Welcome */
+.wrap{max-width:1250px;margin:22px auto;padding:0 16px}
+.welcome{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.welcome h2{margin:0;font-size:24px;color:#1d4b52}.welcome p{margin:4px 0;color:var(--muted)}
+.date-pill{background:linear-gradient(120deg,#fff,#f1fbf7);border:1px solid #d5efe5;border-radius:999px;padding:9px 16px;color:var(--pd);font-weight:600;box-shadow:0 4px 12px rgba(34,165,138,.1)}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.stat{background:#fff;border:1px solid #fff;padding:17px;border-radius:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat:nth-child(1){background:linear-gradient(135deg,#d9f5ea,#f4fffb)}
+.stat:nth-child(2){background:linear-gradient(135deg,#d9edff,#f5faff)}
+.stat:nth-child(3){background:linear-gradient(135deg,#e8e0ff,#f9f6ff)}
+.stat:nth-child(4){background:linear-gradient(135deg,#ffe8d4,#fffaf5)}
+.stat .label{color:#5f7882;font-size:13px}.stat strong{font-size:24px;display:block;margin-top:6px;color:#1d3b46}
+.stat .icon{float:right;font-size:22px;background:#ffffffc0;padding:8px;border-radius:14px;box-shadow:0 3px 8px rgba(0,0,0,.05)}
+/* Tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{background:#ffffffd9;border:1px solid #e3eef0;color:#5a747c;border-radius:999px;padding:10px 18px;font-weight:600;box-shadow:0 3px 8px rgba(100,140,170,.07)}
+.tab:hover{background:#fff;color:var(--pd)}
+.tab.active{background:linear-gradient(120deg,#2fb797,#5ab9e6);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(47,183,151,.35)}
+/* Panels */
+.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(330px,.8fr);gap:16px;align-items:start}
+.panel{background:#ffffffee;border:1px solid #fff;border-radius:22px;padding:18px;box-shadow:var(--shadow)}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.panel h3{margin:0;font-size:18px;color:#1d4b52}.sub{color:var(--muted);font-size:13px}
+/* Search & inputs */
+.searchbox{position:relative;margin-bottom:12px}
+.searchbox input{width:100%;padding:12px 44px 12px 16px;border:1px solid #d9e9ee;border-radius:14px;outline:none;background:#f9fdfd}
+.searchbox span{position:absolute;right:15px;top:10px;font-size:19px;color:#9ab5b6}
+.searchbox input:focus,.field input:focus,.field select:focus{border-color:var(--p);box-shadow:0 0 0 4px #22a58a1f;background:#fff}
+/* Books */
+.book-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-height:510px;overflow:auto;padding:2px 4px 4px 2px;scrollbar-width:thin;scrollbar-color:#c5e6dc transparent}
+.book{border:1px solid #e3f0ee;border-radius:16px;padding:13px;transition:.18s;background:linear-gradient(160deg,#fff,#f4fbf8)}
+.book:nth-child(3n+2){background:linear-gradient(160deg,#fff,#f3f8ff)}
+.book:nth-child(3n){background:linear-gradient(160deg,#fff,#f8f5ff)}
+.book:hover{border-color:#9edbc9;transform:translateY(-2px);box-shadow:0 10px 22px rgba(34,165,138,.15)}
+.book-title{font-weight:600;line-height:1.35;margin-bottom:5px;color:#214652}.book-meta{font-size:12px;color:var(--muted)}
+.book-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:8px}
+.price{font-weight:700;color:var(--pd)}
+.stock{font-size:12px;background:var(--sun);border-radius:20px;padding:3px 10px;color:#99691a}
+.add{background:linear-gradient(120deg,#2fb797,#5bc9ae);color:#fff;border-radius:11px;padding:7px 13px;font-weight:600;box-shadow:0 4px 10px rgba(47,183,151,.3)}
+.add:hover{filter:brightness(1.06);transform:translateY(-1px)}
+/* Cart */
+.cart-empty{text-align:center;padding:28px 8px;color:var(--muted);background:linear-gradient(160deg,#f6fcfa,#f6f4ff);border-radius:16px}
+.cart-list{display:flex;flex-direction:column;gap:9px}
+.cart-item{border:1px solid #e3f0ee;border-radius:15px;padding:11px;background:#fbfefd}
+.cart-top{display:flex;justify-content:space-between;gap:8px}.cart-name{font-weight:600;color:#214652}
+.remove{background:var(--rose);color:#d6456b;border-radius:9px;padding:3px 10px;font-weight:600}.remove:hover{background:#ffd5e2}
+.cart-controls{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
+.qty{display:flex;align-items:center;border:1px solid #d7ebe4;border-radius:11px;overflow:hidden;background:#fff}
+.qty button{background:var(--mint);padding:5px 10px;color:var(--pd);font-weight:700}.qty button:hover{background:#cdeee2}
+.qty input{width:40px;border:0;text-align:center;outline:0}
+.discount{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--muted)}
+.discount input{width:52px;padding:5px;border:1px solid #d9e9ee;border-radius:8px;outline:none}
+.cart-sum{border-top:2px dashed #d4ebe3;margin-top:14px;padding-top:12px}
+.sumrow{display:flex;justify-content:space-between;margin:6px 0;color:#52707a}
+.sumrow.total{font-size:20px;font-weight:700;color:var(--pd);margin-top:10px;background:linear-gradient(120deg,#e2f7ef,#e3efff);padding:9px 12px;border-radius:13px}
+.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:13px;color:var(--muted)}
+.field input,.field select{border:1px solid #d9e9ee;border-radius:12px;padding:10px 11px;background:#fbfefe;outline:none}
+.customer-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}
+.primary{width:100%;padding:13px;background:linear-gradient(120deg,#1f9f85,#3fb0d8);color:#fff;border-radius:15px;font-weight:700;font-size:16px;box-shadow:0 8px 20px rgba(47,160,190,.3)}
+.primary:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.secondary{padding:9px 14px;background:linear-gradient(120deg,#e2f7ef,#e4eeff);color:var(--pd);border-radius:12px;font-weight:600;border:1px solid #d6efe6}
+.secondary:hover{background:linear-gradient(120deg,#d3f2e6,#d6e6ff)}
+.hint{font-size:12px;color:var(--muted);margin-top:9px}
+/* Tables (inventory & report) */
+#inventoryTable th,#reportContent th{background:#eaf8f3;color:var(--pd);padding:11px 10px;font-weight:600;text-align:left;border-bottom:2px solid #d3eee4!important;font-size:14px}
+#inventoryTable th:first-child,#reportContent th:first-child{border-radius:12px 0 0 12px}
+#inventoryTable th:last-child,#reportContent th:last-child{border-radius:0 12px 12px 0}
+#inventoryTable td,#reportContent td{padding:10px;text-align:left;border-bottom:1px solid #edf4f4!important}
+#inventoryTable tbody tr:hover td,#reportContent tbody tr:hover td{background:#f5fcf9}
+/* Modal */
+.modal{position:fixed;inset:0;background:#4c628055;backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px;z-index:10}.modal.show{display:flex}
+.modal-box{background:linear-gradient(170deg,#fff,#f6fcfa);border-radius:24px;width:min(520px,100%);max-height:90vh;overflow:auto;padding:22px;box-shadow:0 25px 60px rgba(60,90,130,.28)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.modal-head h3{margin:0;color:#1d4b52}
+.close{font-size:22px;background:var(--lav);color:#6a55c4;border-radius:11px;width:36px;height:36px}.close:hover{background:#ddd2ff}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.form-grid .full{grid-column:1/-1}
+.modal-actions{display:flex;gap:8px;margin-top:16px}.modal-actions button{flex:1;padding:12px;border-radius:13px;font-weight:600}
+.save{background:linear-gradient(120deg,#1f9f85,#3fb0d8);color:#fff;box-shadow:0 6px 16px rgba(47,160,190,.28)}.cancel{background:#eef4f7;color:#587482}.cancel:hover{background:#e3edf1}
+/* Receipt */
+#receipt{display:none}.receipt-paper{font-family:'Hind Siliguri',serif;max-width:780px;margin:auto;color:#222;background:white;padding:24px;border:1px solid #ddd}.receipt-title{text-align:center;border-bottom:2px solid #444;padding-bottom:12px}.receipt-title h2{margin:0;font-size:25px}.receipt-title p{margin:4px 0}.receipt-info{display:flex;justify-content:space-between;margin:12px 0}.receipt-paper table{width:100%;border-collapse:collapse}.receipt-paper th,.receipt-paper td{border:1px solid #777;padding:7px;text-align:center}.receipt-paper th{background:#f4f4f4}.receipt-total{width:290px;margin-left:auto;margin-top:10px}.receipt-total div{display:flex;justify-content:space-between;padding:3px}.receipt-foot{text-align:center;border-top:1px dashed #777;margin-top:18px;padding-top:10px}
+/* Logo image */
+.logo{overflow:hidden;padding:3px}.logo img{width:100%;height:100%;object-fit:contain;display:block}
+.receipt-logo{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 4px}
+.check{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--muted);margin-top:10px;cursor:pointer}.check input{accent-color:var(--p);width:16px;height:16px}
+.file-input{display:none}
+/* Toast */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,#2b9a84,#3d94c8);color:white;padding:11px 20px;border-radius:999px;box-shadow:0 10px 25px rgba(40,120,150,.35);display:none;z-index:30}.toast.show{display:block}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.book-grid{max-height:360px}}
+@media(max-width:520px){.topbar{padding:13px}.brand h1{font-size:18px}.brand small{font-size:11px}.logo{width:40px;height:40px}.top-actions button{font-size:12px;padding:8px}.wrap{margin:15px auto;padding:0 10px}.welcome h2{font-size:20px}.date-pill{font-size:12px;padding:7px 11px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.book-grid{grid-template-columns:1fr}.panel{padding:13px}.customer-row{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}}
+@media print{body{background:#fff!important}body>*:not(#receipt){display:none!important}#receipt{display:block!important}.receipt-paper{border:0;padding:0}.receipt-paper table th,.receipt-paper table td{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="top-inner">
+<div class="brand"><div class="logo"><img src="icons/emblem.png" alt="মাকতাবায়ে জহির লোগো"></div><div><h1>মাকতাবায়ে জহির</h1><small>বই বিক্রয় ও হিসাব ব্যবস্থাপনা</small></div></div>
+<div class="top-actions"><button onclick="openBookModal()">＋ নতুন বই</button><button onclick="backupData()">⬇ ব্যাকআপ</button><button onclick="document.getElementById('restoreFile').click()">⬆ রিস্টোর</button><input type="file" id="restoreFile" class="file-input" accept=".json,application/json" onchange="restoreData(this)"></div>
+</div></header>
+<div class="wrap">
+<div class="welcome"><div><h2>আসসালামু আলাইকুম 👋</h2><p>আজকের বিক্রয় পরিচালনা করুন সহজে</p></div><div class="date-pill" id="today"></div></div>
+<div class="stats">
+<div class="stat"><span class="icon">💰</span><span class="label">আজকের বিক্রয়</span><strong id="todaySales">৳ ০</strong></div>
+<div class="stat"><span class="icon">🧾</span><span class="label">আজকের রশিদ</span><strong id="todayCount">০</strong></div>
+<div class="stat"><span class="icon">📚</span><span class="label">মোট বই</span><strong id="bookCount">০</strong></div>
+<div class="stat"><span class="icon">📦</span><span class="label">স্টকে বই</span><strong id="stockCount">০</strong></div>
+</div>
+<div class="tabs"><button class="tab active" onclick="switchTab('sale',this)">🛒 বিক্রয়</button><button class="tab" onclick="switchTab('inventory',this)">📦 বই ও স্টক</button><button class="tab" onclick="switchTab('customers',this)">👥 কাস্টমার</button><button class="tab" onclick="switchTab('report',this)">📊 রিপোর্ট</button></div>
+<div class="layout" id="saleView">
+<section class="panel"><div class="panel-head"><h3>📖 বই নির্বাচন করুন</h3><span class="sub" id="visibleCount"></span></div>
+<div class="searchbox"><input id="search" placeholder="বইয়ের নামের প্রথম ২–৩ অক্ষর লিখুন…" oninput="renderBooks()"><span>⌕</span></div>
+<div class="book-grid" id="books"></div></section>
+<section class="panel"><div class="panel-head"><h3>🛍️ বিক্রয় তালিকা</h3><button class="secondary" onclick="clearCart()">সব মুছুন</button></div>
+<div id="cart"></div>
+<div class="panel-head" style="margin-top:12px"><h3>👤 কাস্টমার</h3><button class="secondary" onclick="openCustomerModal()">＋ কাস্টমার যোগ করুন</button></div><div class="field"><label>আগের কাস্টমার নির্বাচন</label><select id="customerSelect" onchange="selectCustomer(this.value)"><option value="">সাধারণ ক্রেতা / নতুন ক্রেতা</option></select></div><div class="customer-row"><div class="field"><label>ক্রেতার নাম</label><input id="customer" placeholder="নাম (ঐচ্ছিক)"></div><div class="field"><label>মোবাইল</label><input id="phone" placeholder="মোবাইল (ঐচ্ছিক)"></div></div><div class="field"><label>ঠিকানা</label><input id="address" placeholder="কাস্টমারের ঠিকানা"></div>
+<div class="field"><label>প্যাকেট খরচ (৳)</label><input type="number" id="pack" value="0" min="0" oninput="renderCart()"></div>
+<div style="margin:12px 0" class="field"><label>জমা / পরিশোধ (৳)</label><input type="number" id="paid" value="" min="0" placeholder="সম্পূর্ণ পরিশোধ হলে ফাঁকা রাখুন"></div>
+<button class="primary" onclick="checkout()">✓ বিক্রয় সম্পন্ন ও রশিদ</button><label class="check"><input type="checkbox" id="autoPrint" checked onchange="localStorage.setItem('mz_autoprint',this.checked?'1':'0')"> বিক্রয়ের পর রশিদ প্রিন্ট করুন</label><div class="hint">রশিদ তৈরি হলে স্টক স্বয়ংক্রিয়ভাবে কমবে।</div></section>
+</div>
+<div id="inventoryView" style="display:none" class="panel"><div class="panel-head"><h3>📦 বইয়ের তালিকা ও স্টক</h3><button class="secondary" onclick="openBookModal()">＋ বই যোগ করুন</button></div><div class="searchbox"><input id="invSearch" placeholder="বই / মাকতাবা খুঁজুন…" oninput="renderInventory()"><span>⌕</span></div><div style="overflow:auto"><table style="width:100%;border-collapse:collapse" id="inventoryTable"></table></div></div>
+<div id="customersView" style="display:none" class="panel"><div class="panel-head"><h3>👥 কাস্টমার তালিকা</h3><button class="secondary" onclick="openCustomerModal()">＋ কাস্টমার যোগ করুন</button></div><div class="searchbox"><input id="customerSearch" placeholder="নাম / মোবাইল দিয়ে খুঁজুন…" oninput="renderCustomerList()"><span>⌕</span></div><div class="sub" id="customerCount"></div><div id="customerList" class="book-grid" style="margin-top:12px"></div></div>
+<div id="reportView" style="display:none" class="panel"><div class="panel-head"><h3>📊 বিক্রয় রিপোর্ট</h3><button class="secondary" onclick="printReportPDF()">📄 PDF রিপোর্ট</button><button class="secondary" onclick="exportCSV()">CSV ডাউনলোড</button></div><div id="reportContent"></div></div>
+</div>
+<div class="modal" id="bookModal"><div class="modal-box"><div class="modal-head"><h3 id="bookModalTitle">নতুন বই যোগ করুন</h3><button class="close" onclick="closeBookModal()">×</button></div><div class="form-grid">
+<div class="field full"><label>বইয়ের নাম *</label><input id="bName" placeholder="বইয়ের নাম"></div>
+<div class="field"><label>মাকতাবা / প্রকাশনী</label><input id="bPublisher" placeholder="প্রকাশনীর নাম"></div>
+<div class="field"><label>বিক্রয় মূল্য (৳) *</label><input id="bPrice" type="number" min="0" placeholder="০"></div>
+<div class="field"><label>ক্রয় মূল্য (৳)</label><input id="bCost" type="number" min="0" placeholder="ঐচ্ছিক"></div>
+<div class="field"><label>স্টকে পরিমাণ</label><input id="bStock" type="number" min="0" value="0"></div>
+</div><div class="modal-actions"><button class="cancel" onclick="closeBookModal()">বাতিল</button><button class="save" onclick="saveBook()">সংরক্ষণ</button></div></div></div>
+<div class="modal" id="customerModal"><div class="modal-box"><div class="modal-head"><h3 id="customerModalTitle">নতুন কাস্টমার যোগ করুন</h3><button class="close" onclick="closeCustomerModal()">×</button></div><div class="form-grid"><div class="field full"><label>কাস্টমারের নাম *</label><input id="cName" placeholder="নাম"></div><div class="field"><label>মোবাইল নম্বর</label><input id="cPhone" placeholder="মোবাইল"></div><div class="field"><label>ঠিকানা</label><input id="cAddress" placeholder="ঠিকানা"></div></div><div class="modal-actions"><button class="cancel" onclick="closeCustomerModal()">বাতিল</button><button class="save" onclick="saveCustomer()">সংরক্ষণ ও নির্বাচন</button></div></div></div><div id="receipt"></div><div class="toast" id="toast"></div>
+<script>
+const fmt=n=>new Intl.NumberFormat('bn-BD',{maximumFractionDigits:2}).format(Number(n||0));
+const money=n=>'৳ '+fmt(n);
+const bn=v=>String(v).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+function load(key,def){let raw=null;try{raw=localStorage.getItem(key);if(raw===null)return def;let v=JSON.parse(raw);if(Array.isArray(v))return v;throw 0}catch(e){try{if(raw!==null)localStorage.setItem(key+'_corrupt_'+Date.now(),raw)}catch(_){}return def}}
+let books=load('mz_books',[
+{id:1,name:'রিয়াজুস সালেহীন (বাংলা-১, ২)',publisher:'ইসলামিয়া কুতুবখানা',price:550,cost:0,stock:8},
+{id:2,name:'তাফসীরুল কুরআনুল কারীম',publisher:'মাকতাবা',price:380,cost:0,stock:5},
+{id:3,name:'তাওযীহুল কুরআন (৩য় খণ্ড)',publisher:'ইসলামিয়া কুতুবখানা',price:600,cost:0,stock:4},
+{id:4,name:'আকীদাতুত তাহাবী (আরবি-বাংলা)',publisher:'মাকতাবা',price:325,cost:0,stock:7},
+{id:5,name:'ফাজায়েলে আমল',publisher:'মাকতাবা',price:450,cost:0,stock:10},
+{id:6,name:'মেশকাত শরীফ (আরবি-বাংলা-১)',publisher:'ইসলামিয়া কুতুবখানা',price:580,cost:0,stock:3}
+]);
+let sales=load('mz_sales',[]),cart=[];let customers=load('mz_customers',[]);let editingBookId=null;
+const rno=s=>s.no?bn(s.no):bn(String(s.id).slice(-6));
+function persist(){try{localStorage.setItem('mz_books',JSON.stringify(books));localStorage.setItem('mz_sales',JSON.stringify(sales));localStorage.setItem('mz_customers',JSON.stringify(customers))}catch(e){toast('⚠️ ডেটা সংরক্ষণ করা যায়নি! ব্রাউজারের স্টোরেজ ভরে গেছে বা বন্ধ। এখনই ব্যাকআপ নিন।')}}
+function dateBangla(){return new Date().toLocaleDateString('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}
+document.getElementById('today').textContent=dateBangla();
+function renderBooks(){let q=document.getElementById('search').value.trim().toLowerCase();let filtered=books.filter(b=>(b.name+' '+b.publisher).toLowerCase().includes(q));document.getElementById('visibleCount').textContent=fmt(filtered.length)+'টি বই';document.getElementById('books').innerHTML=filtered.map(b=>`<div class="book"><div class="book-title">${esc(b.name)}</div><div class="book-meta">🏢 ${esc(b.publisher||'প্রকাশনী উল্লেখ নেই')}</div><div class="book-bottom"><div><div class="price">${money(b.price)}</div><span class="stock">স্টক: ${fmt(b.stock)}</span></div><button class="add" onclick="addCart(${b.id})" ${b.stock<=0?'disabled style="opacity:.45"':''}>+ যোগ</button></div></div>`).join('')||'<div class="cart-empty">কোনো বই পাওয়া যায়নি।</div>';renderCart();}
+function addCart(id){let b=books.find(x=>x.id===id);if(!b||b.stock<=0)return;let c=cart.find(x=>x.id===id);if(c){if(c.qty<b.stock)c.qty++;else toast('স্টকের বেশি নেওয়া যাবে না');}else cart.push({id,qty:1,discount:0});renderCart();}
+function renderCart(){let el=document.getElementById('cart');if(!cart.length){el.innerHTML='<div class="cart-empty">বিক্রয় তালিকা খালি<br>বাম পাশ থেকে বই যোগ করুন</div>';document.querySelector('.cart-sum')?.remove();return;}
+el.innerHTML='<div class="cart-list">'+cart.map(c=>{let b=books.find(x=>x.id===c.id);return `<div class="cart-item"><div class="cart-top"><div class="cart-name">${esc(b.name)}<div class="sub">${money(b.price)} / টি</div></div><button class="remove" onclick="removeCart(${b.id})">×</button></div><div class="cart-controls"><div class="qty"><button onclick="changeQty(${b.id},-1)">−</button><input value="${c.qty}" type="number" min="1" max="${b.stock}" onchange="setQty(${b.id},this.value)"><button onclick="changeQty(${b.id},1)">+</button></div><label class="discount">ছাড় % <input type="number" min="0" max="100" value="${c.discount}" onchange="setDiscount(${b.id},this.value)"></label><span style="margin-left:auto;font-weight:700">${money(b.price*c.qty*(1-c.discount/100))}</span></div></div>`}).join('')+'</div>';
+let subtotal=cart.reduce((s,c)=>s+books.find(b=>b.id===c.id).price*c.qty,0),disc=cart.reduce((s,c)=>s+books.find(b=>b.id===c.id).price*c.qty*c.discount/100,0),pack=Math.max(0,Number(document.getElementById('pack').value||0)),total=subtotal-disc+pack;
+el.insertAdjacentHTML('beforeend',`<div class="cart-sum"><div class="sumrow"><span>মোট মূল্য</span><strong>${money(subtotal)}</strong></div><div class="sumrow"><span>মোট ছাড়</span><strong>− ${money(disc)}</strong></div><div class="sumrow"><span>প্যাকেট</span><strong>${money(pack)}</strong></div><div class="sumrow total"><span>সর্বমোট</span><strong>${money(total)}</strong></div></div>`);
+}
+function changeQty(id,d){let c=cart.find(x=>x.id===id),b=books.find(x=>x.id===id);c.qty=Math.min(b.stock,Math.max(1,c.qty+d));renderCart()}
+function setQty(id,v){let c=cart.find(x=>x.id===id),b=books.find(x=>x.id===id);c.qty=Math.min(b.stock,Math.max(1,parseInt(v)||1));renderCart()}
+function setDiscount(id,v){cart.find(x=>x.id===id).discount=Math.min(100,Math.max(0,Number(v)||0));renderCart()}
+function removeCart(id){cart=cart.filter(x=>x.id!==id);renderCart()}
+function clearCart(){cart=[];renderCart()}
+function checkout(){if(!cart.length){toast('আগে বই যোগ করুন');return}let subtotal=cart.reduce((s,c)=>s+books.find(b=>b.id===c.id).price*c.qty,0),discount=cart.reduce((s,c)=>s+books.find(b=>b.id===c.id).price*c.qty*c.discount/100,0),pack=Math.max(0,Number(document.getElementById('pack').value||0)),total=subtotal-discount+pack,paid=document.getElementById('paid').value===''?total:Number(document.getElementById('paid').value);if(!isFinite(paid)||paid<0){toast('জমার পরিমাণ সঠিক নয়');return}if(paid>total){toast('জমা মোটের বেশি');return}for(let c of cart){let b=books.find(x=>x.id===c.id);if(c.qty>b.stock){toast('স্টকে পর্যাপ্ত বই নেই');return}}
+let sale={id:Date.now(),no:sales.reduce((m,x)=>Math.max(m,x.no||0),0)+1,date:new Date().toISOString(),customer:document.getElementById('customer').value,phone:document.getElementById('phone').value,address:document.getElementById('address').value,items:cart.map(c=>({...c,name:books.find(b=>b.id===c.id).name,publisher:books.find(b=>b.id===c.id).publisher,price:books.find(b=>b.id===c.id).price})),subtotal,discount,pack,total,paid,due:total-paid};
+cart.forEach(c=>books.find(b=>b.id===c.id).stock-=c.qty);sales.unshift(sale);persist();makeReceipt(sale);cart=[];document.getElementById('customer').value='';document.getElementById('phone').value='';document.getElementById('address').value='';document.getElementById('customerSelect').value='';document.getElementById('pack').value=0;document.getElementById('paid').value='';renderBooks();renderCustomers();updateStats();toast('বিক্রয় সম্পন্ন হয়েছে!');if(document.getElementById('autoPrint').checked)setTimeout(()=>window.print(),250)}
+function makeReceipt(s){let rows=s.items.map((i,n)=>`<tr><td>${fmt(n+1)}</td><td style="text-align:left">${esc(i.name)}</td><td>${fmt(i.qty)}</td><td>${money(i.price)}</td><td>${fmt(i.discount)}%</td><td>${money(i.price*i.qty*(1-i.discount/100))}</td></tr>`).join('');document.getElementById('receipt').innerHTML=`<div class="receipt-paper"><div class="receipt-title"><img class="receipt-logo" src="icons/emblem.png" alt=""><h2>মাকতাবায়ে জহির</h2><p>বড় মসজিদ গেইট, মেলান্দহ বাজার, জামালপুর</p><p>ক্যাশ মেমু</p></div><div class="receipt-info"><span>রশিদ নং: ${rno(s)}</span><span>তারিখ: ${new Date(s.date).toLocaleString('bn-BD')}</span></div><div style="margin-bottom:10px">ক্রেতা: ${esc(s.customer||'সাধারণ ক্রেতা')}　${s.phone?'মোবাইল: '+esc(s.phone):''}${s.address?'　ঠিকানা: '+esc(s.address):''}</div><table><thead><tr><th>নং</th><th>বইয়ের নাম</th><th>পরিমাণ</th><th>মূল্য</th><th>ছাড়</th><th>মোট</th></tr></thead><tbody>${rows}</tbody></table><div class="receipt-total"><div><span>মোট মূল্য</span><span>${money(s.subtotal)}</span></div><div><span>মোট ছাড়</span><span>− ${money(s.discount)}</span></div><div><span>প্যাকেট</span><span>${money(s.pack)}</span></div><div style="font-weight:bold;border-top:1px solid #555"><span>সর্বমোট</span><span>${money(s.total)}</span></div><div><span>জমা</span><span>${money(s.paid)}</span></div><div><span>বাকি</span><span>${money(s.due)}</span></div></div><div style="display:flex;justify-content:space-between;gap:30px;margin-top:42px;margin-bottom:18px"><span>ক্রেতার স্বাক্ষর</span><span>বিক্রেতার স্বাক্ষর</span></div><div class="receipt-foot" style="margin-top:18px">আপনার কেনাকাটার জন্য ধন্যবাদ</div></div>`}
+function switchTab(tab,btn){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById('saleView').style.display=tab==='sale'?'grid':'none';document.getElementById('inventoryView').style.display=tab==='inventory'?'block':'none';document.getElementById('customersView').style.display=tab==='customers'?'block':'none';document.getElementById('reportView').style.display=tab==='report'?'block':'none';if(tab==='inventory')renderInventory();if(tab==='customers')renderCustomerList();if(tab==='report')renderReport()}
+function renderInventory(){let q=(document.getElementById('invSearch').value||'').toLowerCase();let list=books.filter(b=>(b.name+' '+b.publisher).toLowerCase().includes(q));document.getElementById('inventoryTable').innerHTML='<thead><tr><th style="padding:9px;border-bottom:1px solid #ddd">বই</th><th>মাকতাবা</th><th>দাম</th><th>স্টক</th><th>অ্যাকশন</th></tr></thead><tbody>'+list.map(b=>`<tr><td style="padding:9px;border-bottom:1px solid #eee">${esc(b.name)}</td><td>${esc(b.publisher||'')}</td><td>${money(b.price)}</td><td>${fmt(b.stock)}</td><td><button class="secondary" onclick="editBook(${b.id})">✏️ এডিট</button> <button class="secondary" onclick="editStock(${b.id})">স্টক ±</button> <button class="remove" onclick="deleteBook(${b.id})">মুছুন</button></td></tr>`).join('')+'</tbody>'}
+function editStock(id){let b=books.find(x=>x.id===id),v=prompt('নতুন স্টক সংখ্যা লিখুন',b.stock);if(v===null||String(v).trim()==='')return;let n=Number(v);if(!isFinite(n)||n<0){toast('সঠিক স্টক সংখ্যা লিখুন');return}{b.stock=Math.floor(n);persist();renderInventory();renderBooks();updateStats()}}
+function deleteBook(id){if(confirm('এই বইটি মুছবেন?')){books=books.filter(b=>b.id!==id);cart=cart.filter(x=>x.id!==id);persist();renderInventory();renderBooks();updateStats()}}
+function openBookModal(){editingBookId=null;document.getElementById('bookModalTitle').textContent='নতুন বই যোগ করুন';['bName','bPublisher','bPrice','bCost'].forEach(id=>document.getElementById(id).value='');document.getElementById('bStock').value=0;document.getElementById('bookModal').classList.add('show')}
+function editBook(id){let b=books.find(x=>x.id===id);if(!b)return;editingBookId=id;document.getElementById('bookModalTitle').textContent='বইয়ের তথ্য সম্পাদনা';document.getElementById('bName').value=b.name;document.getElementById('bPublisher').value=b.publisher||'';document.getElementById('bPrice').value=b.price;document.getElementById('bCost').value=b.cost||0;document.getElementById('bStock').value=b.stock;document.getElementById('bookModal').classList.add('show')}
+function closeBookModal(){document.getElementById('bookModal').classList.remove('show')}
+function saveBook(){let name=document.getElementById('bName').value.trim(),price=Number(document.getElementById('bPrice').value);if(!name||price<0||document.getElementById('bPrice').value===''){toast('বইয়ের নাম ও দাম লিখুন');return}let obj={name,publisher:document.getElementById('bPublisher').value.trim(),price,cost:Math.max(0,Number(document.getElementById('bCost').value||0)),stock:Math.max(0,parseInt(document.getElementById('bStock').value)||0)};if(editingBookId){Object.assign(books.find(b=>b.id===editingBookId),obj);toast('বইয়ের তথ্য আপডেট হয়েছে')}else{books.push({id:Date.now(),...obj});toast('বই সংরক্ষিত হয়েছে')}persist();closeBookModal();renderBooks();renderInventory();updateStats()}
+
+function renderCustomers(){let sel=document.getElementById('customerSelect');if(!sel)return;let chosen=sel.value;sel.innerHTML='<option value="">সাধারণ ক্রেতা / নতুন ক্রেতা</option>'+customers.map(c=>`<option value="${c.id}">${esc(c.name)}${c.phone?' — '+esc(c.phone):''}</option>`).join('');if(customers.some(c=>String(c.id)===chosen))sel.value=chosen}
+let editingCustomerId=null;
+function openCustomerModal(){editingCustomerId=null;document.getElementById('customerModalTitle').textContent='নতুন কাস্টমার যোগ করুন';['cName','cPhone','cAddress'].forEach(id=>document.getElementById(id).value='');document.getElementById('customerModal').classList.add('show')}
+function closeCustomerModal(){document.getElementById('customerModal').classList.remove('show')}
+function saveCustomer(){let name=document.getElementById('cName').value.trim();if(!name){toast('কাস্টমারের নাম লিখুন');return}let obj={name,phone:document.getElementById('cPhone').value.trim(),address:document.getElementById('cAddress').value.trim()};let c;if(editingCustomerId){c=customers.find(x=>x.id===editingCustomerId);Object.assign(c,obj);toast('কাস্টমারের তথ্য আপডেট হয়েছে')}else{c={id:Date.now(),...obj};customers.push(c);toast('কাস্টমার যোগ হয়েছে')}persist();renderCustomers();renderCustomerList();document.getElementById('customerSelect').value=String(c.id);selectCustomer(String(c.id));closeCustomerModal();editingCustomerId=null}
+function renderCustomerList(){let q=(document.getElementById('customerSearch')?.value||'').trim().toLowerCase();let list=customers.filter(c=>(c.name+' '+(c.phone||'')+' '+(c.address||'')).toLowerCase().includes(q));document.getElementById('customerCount').textContent=fmt(list.length)+' জন কাস্টমার';document.getElementById('customerList').innerHTML=list.map(c=>`<div class="book"><div class="book-title">👤 ${esc(c.name)}</div><div class="book-meta">📞 ${esc(c.phone||'নম্বর নেই')}<br>📍 ${esc(c.address||'ঠিকানা নেই')}</div><div class="book-bottom"><button class="add" onclick="openCustomerForSale(${c.id})">কাস্টমার দেখুন</button><button class="secondary" onclick="editCustomer(${c.id})">✏️ এডিট</button></div></div>`).join('')||'<div class="cart-empty">কাস্টমার পাওয়া যায়নি।</div>'}
+function openCustomerForSale(id){let c=customers.find(x=>x.id===id);if(!c)return;let saleTab=document.querySelector('.tab[onclick*="switchTab(\'sale\'"]');switchTab('sale',saleTab);document.getElementById('customerSelect').value=String(id);selectCustomer(String(id));document.getElementById('search').value='';renderBooks();toast('কাস্টমার নির্বাচিত—এখন কিতাব যোগ করুন')}
+function editCustomer(id){let c=customers.find(x=>x.id===id);if(!c)return;editingCustomerId=id;document.getElementById('customerModalTitle').textContent='কাস্টমারের তথ্য সম্পাদনা';document.getElementById('cName').value=c.name;document.getElementById('cPhone').value=c.phone||'';document.getElementById('cAddress').value=c.address||'';document.getElementById('customerModal').classList.add('show')}
+function selectCustomer(id){let c=customers.find(x=>String(x.id)===String(id));document.getElementById('customer').value=c?.name||'';document.getElementById('phone').value=c?.phone||'';document.getElementById('address').value=c?.address||''}
+
+function updateStats(){let d=new Date().toDateString(),tod=sales.filter(s=>new Date(s.date).toDateString()===d);document.getElementById('todaySales').textContent=money(tod.reduce((a,s)=>a+s.total,0));document.getElementById('todayCount').textContent=fmt(tod.length);document.getElementById('bookCount').textContent=fmt(books.length);document.getElementById('stockCount').textContent=fmt(books.reduce((a,b)=>a+b.stock,0))}
+function renderReport(){let all=sales,tot=all.reduce((a,s)=>a+s.total,0),due=all.reduce((a,s)=>a+s.due,0);document.getElementById('reportContent').innerHTML=`<div class="stats" style="grid-template-columns:repeat(3,1fr)"><div class="stat"><span class="label">মোট বিক্রয়</span><strong>${money(tot)}</strong></div><div class="stat"><span class="label">বিক্রয় রশিদ</span><strong>${fmt(all.length)}</strong></div><div class="stat"><span class="label">মোট বাকি</span><strong>${money(due)}</strong></div></div><div style="overflow:auto"><table style="width:100%;border-collapse:collapse"><thead><tr><th style="padding:8px;border-bottom:1px solid #ddd">তারিখ</th><th>রশিদ</th><th>ক্রেতা</th><th>মোট</th><th>জমা</th><th>বাকি</th></tr></thead><tbody>${all.map(s=>`<tr><td style="padding:8px;border-bottom:1px solid #eee">${new Date(s.date).toLocaleDateString('bn-BD')}</td><td>${rno(s)}</td><td>${esc(s.customer||'সাধারণ')}</td><td>${money(s.total)}</td><td>${money(s.paid)}</td><td>${money(s.due)}</td></tr>`).join('')||'<tr><td colspan="6" style="padding:20px;text-align:center">এখনো বিক্রয় নেই</td></tr>'}</tbody></table></div>`}
+function printReportPDF(){let all=sales,tot=all.reduce((a,s)=>a+s.total,0),paid=all.reduce((a,s)=>a+s.paid,0),due=all.reduce((a,s)=>a+s.due,0);let rows=all.map(s=>`<tr><td>${new Date(s.date).toLocaleDateString('bn-BD')}</td><td>${rno(s)}</td><td>${esc(s.customer||'সাধারণ ক্রেতা')}</td><td>${esc(s.phone||'')}</td><td>${money(s.total)}</td><td>${money(s.paid)}</td><td>${money(s.due)}</td></tr>`).join('');document.getElementById('receipt').innerHTML=`<div class='receipt-paper'><div class='receipt-title'><h2>মাকতাবায়ে জহির</h2><p>বিক্রয় রিপোর্ট</p><p>প্রস্তুতের তারিখ: ${dateBangla()}</p></div><div class='receipt-total' style='width:100%'><div><b>মোট বিক্রয়</b><b>${money(tot)}</b></div><div><b>মোট জমা</b><b>${money(paid)}</b></div><div><b>মোট বাকি</b><b>${money(due)}</b></div><div><b>মোট রশিদ</b><b>${fmt(all.length)}</b></div></div><table><thead><tr><th>তারিখ</th><th>রশিদ</th><th>কাস্টমার</th><th>মোবাইল</th><th>বিক্রয়</th><th>জমা</th><th>বাকি</th></tr></thead><tbody>${rows||'<tr><td colspan=7>এখনো বিক্রয় নেই</td></tr>'}</tbody></table></div>`;setTimeout(()=>window.print(),200)}
+function backupData(){let blob=new Blob([JSON.stringify({app:'maktabaye-zahir',version:2,exportedAt:new Date().toISOString(),books,sales,customers},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='maktabaye-zahir-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('ব্যাকআপ ফাইল ডাউনলোড হয়েছে')}
+function restoreData(inp){let f=inp.files&&inp.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d||!Array.isArray(d.books)||!Array.isArray(d.sales))throw 0;let cs=Array.isArray(d.customers)?d.customers:customers;if(!confirm('এই ব্যাকআপ ফাইল থেকে ডেটা ফিরিয়ে আনলে বর্তমান সব বই, বিক্রয় ও কাস্টমার মুছে যাবে। চালিয়ে যাবেন?')){inp.value='';return}books=d.books;sales=d.sales;customers=cs;cart=[];persist();renderBooks();renderCustomers();renderCustomerList();renderInventory();renderReport();updateStats();toast('ডেটা সফলভাবে ফিরিয়ে আনা হয়েছে')}catch(e){toast('ব্যাকআপ ফাইলটি সঠিক নয়')}inp.value=''};r.readAsText(f)}
+function exportCSV(){let rows=[['তারিখ','রশিদ','ক্রেতা','মোট','জমা','বাকি'],...sales.map(s=>[new Date(s.date).toLocaleDateString('bn-BD'),s.no||s.id,s.customer,s.total,s.paid,s.due])];let csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='sales-report.csv';a.click()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(s){let t=document.getElementById('toast');t.textContent=s;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function numberWordsBn(n){return fmt(n)}
+document.getElementById('autoPrint').checked=localStorage.getItem('mz_autoprint')!=='0';
+renderBooks();renderCustomers();updateStats();
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}
+</script>
+</body>
+</html>
